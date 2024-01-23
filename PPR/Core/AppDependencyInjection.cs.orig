@@ -1,0 +1,236 @@
+﻿using Hrms.Lite.Infrastructure.ISecurity;
+using Hrms.Lite.Infrastructure.ISecurity.Abstract;
+using Hrms.Lite.Infrastructure.Security;
+using Hrms.Lite.Repository.IRepository;
+using Hrms.Lite.Repository.IRepository.Account;
+using Hrms.Lite.Repository.IRepository.DataBank;
+using Hrms.Lite.Repository.IRepository.Payroll;
+using Hrms.Lite.Repository.IRepository.General;
+using Hrms.Lite.Repository.IRepository.Master;
+using Hrms.Lite.Repository.IRepository.TimeOffice;
+using Hrms.Lite.Repository.Repository;
+using Hrms.Lite.Repository.Repository.Account;
+using Hrms.Lite.Repository.Repository.DataBank;
+using Hrms.Lite.Repository.Repository.General;
+using Hrms.Lite.Repository.Repository.Master;
+using Hrms.Lite.Repository.Repository.TimeOffice;
+using Microsoft.Extensions.DependencyInjection;
+using Hrms.Lite.Repository.Repository.Payroll;
+using Hrms.Lite.Repository.IRepository.Essp;
+using Hrms.Lite.Repository.Repository.Essp;
+using Hrms.Lite.Repository.Repository.Home;
+using Hrms.Lite.Repository.IRepository.Home;
+using Hrms.Lite.Repository.IRepository.DataBank.Report;
+using Hrms.Lite.Repository.Repository.DataBank.Report;
+using Hrms.Lite.Repository.IRepository.TimeOffice.Report;
+using Hrms.Lite.Repository.Repository.TimeOffice.Report;
+using Hrms.Lite.Repository.IRepository.Payroll.Report;
+using Hrms.Lite.Repository.Repository.Payroll.Report;
+using Hrms.Lite.Repository.IRepository.DashBoard;
+using Hrms.Lite.Repository.Repository.DashBoard;
+
+namespace Hrms.Lite.Api.Core
+{
+    public static class AppDependencyInjection
+    {
+        public static void AddDependencyInjectionServices(this IServiceCollection services)
+        {
+            #region General
+            services.AddTransient<ISqlConnectionProvider, SqlConnectionProvider>();
+            services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<IHomeRepository, HomeRepository>();
+            services.AddTransient<IDropdownRepository, DropdownRepository>();
+            services.AddTransient<ICommonRepository, CommonRepository>();
+            services.AddScoped<ITokenRepository, TokenRepository>();
+            services.AddScoped<IHash, Hash>();
+            services.AddScoped<IPassword, Password>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
+            #endregion
+
+            #region Master
+            services.AddTransient<IDepartmentRepository, DepartmentRepository>();
+            services.AddTransient<ICountryRepository, CountryRepository>();
+            services.AddTransient<IUserRoleRepository, UserRoleRepository>();
+            services.AddTransient<IAssetRepository, AssetRepository>();
+            services.AddTransient<IRewardsRepository, RewardsRepository>();
+            services.AddTransient<IDisciplinaryIncidentsMasterRepository, DisciplinaryIncidentsMasterRepository>();
+            services.AddTransient<IStateRepository, StateRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IHRPlanningMasterRepository, HRPlanningMasterRepository>();
+            services.AddTransient<IWageGradeRepository, WageGradeRepository>();
+            services.AddTransient<IDistrictRepository, DistrictRepository>();
+            services.AddTransient<IDesignationRepository, DesignationRepository>();
+            services.AddTransient<ITrainingMasterRepository, TrainingMasterRepository>();
+            services.AddTransient<IAppraisalTypeMasterRepository, AppraisalTypeMasterRepository>();
+            services.AddTransient<IEvaluationPeriodMasterRepository, EvaluationPeriodMasterRepository>();
+            services.AddTransient<IGradeRepository, GradeRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ILocationRepository, LocationRepository>();
+            services.AddTransient<IJobTransitionReasonRepository, JobTransitionReasonRepository>();
+            services.AddTransient<IDivionRepository, DivisionRepository>();
+            services.AddTransient<IRegionRepository, RegionRepository>();
+            services.AddTransient<IEmploymentTypeRepository, EmploymentTypeRepository>();
+            services.AddTransient<IWorkLocationRepository, WorkLocationRepository>();
+            services.AddTransient<ISectionRepository, SectionRepository>();
+            services.AddTransient<IESIGroupRepository, ESIGroupRepository>();
+            services.AddTransient<ISkillRepository, SkillRepository>();
+            services.AddTransient<IHobbyRepository, HobbyRepository>();
+            services.AddTransient<IResignationTypeRepository, ResignationTypeRepository>();
+            services.AddTransient<IBankRepository, BankRepository>();
+            services.AddTransient<IFieldOfStudyRepository, FieldOfStudyRepository>();
+            services.AddTransient<IResignationReasonRepository, ResignationReasonRepository>();
+            services.AddTransient<IAllowanceRepository, AllowanceRepository>();
+            services.AddTransient<IDeductionRepository, DeductionRepository>();
+            services.AddTransient<IQualificationRepository, QualificationRepository>();
+            services.AddTransient<IPayrollGroupRepository, PayrollGroupRepository>();
+            services.AddTransient<IPTGroupRepository, PTGroupRepository>();
+            services.AddTransient<IShiftRepository, ShiftRepository>();
+            services.AddTransient<IAssetCategoryRepository, AssetCategoryRepository>();
+            services.AddTransient<ILanguagesRepository, LanguagesRepository>();
+            services.AddTransient<IFieldOfCertificationRepository, FieldOfCertificationRepository>();
+            services.AddTransient<IDisciplinaryIncidentsActionRepository, DisciplinaryIncidentsActionRepository>();
+            services.AddTransient<ILeaveGroupRepository, LeaveGroupRepository>();
+            services.AddTransient<IHolidayGroupRepository, HolidayGroupRepository>();
+            services.AddTransient<ILeavePeriodRepository, LeavePeriodRepository>();
+            services.AddTransient<IHolidayRepository, HolidayRepository>();
+            services.AddTransient<ILoanSettingsRepository, LoanSettingsRepository>();
+            services.AddTransient<IAttendanceStatusRepository, AttendanceStatusRepository>();
+            services.AddTransient<IReaderRepository, ReaderRepository>();
+            services.AddTransient<IJoiningCheckListRepository, JoiningCheckListRepository>();
+            services.AddTransient<IExitCheckListRepository, ExitCheckListRepository>();
+            services.AddTransient<ISkillTypeRepository, SkillTypeRepository>();
+            services.AddTransient<IInterviewTypeRepository, InterviewTypeRepository>();
+            services.AddTransient<IYearlyOffdaySettingsRepository, YearlyOffdaySettingsRepository>();
+            services.AddTransient<IPFGroupRepository, PFGroupRepository>();
+            services.AddTransient<IFinancialYearRepository, FinancialYearRepository>();
+            services.AddTransient<IKeyPositionRepository, KeyPositionRepository>();
+            services.AddTransient<IExitInterviewQuestionnaireRepository, ExitInterviewQuestionnaireRepository>();
+            services.AddTransient<IExitInterviewGroupRepository, ExitInterviewGroupRepository>();
+            services.AddTransient<ISalaryStructureRepository, SalaryStructureRepository>();
+            services.AddTransient<IAttendanceRequestReasonRepository, AttendanceRequestReasonRepository>();
+            services.AddTransient<ILeaveRuleRepository, LeaveRuleRepository>();
+            services.AddTransient<ICheckupTypeRepository, CheckupTypeRepository>();
+            #endregion
+
+            #region Databank
+            services.AddTransient<IOnBoardingRepository, OnBoardingRepository>();
+            services.AddTransient<IPreEnrollmentRepository, PreEnrollmentRepository>();
+            services.AddTransient<IEnrollmentRepository, EnrollmentRepository>();
+            services.AddTransient<IJoiningConfirmationRepository, JoiningConfirmationRepository>();
+            services.AddTransient<IPersonalDetailsRepository, PersonalDetailsRepository>();
+            services.AddTransient<IAssetAllocationRepository, AssetAllocationRepository>();
+            services.AddTransient<IRewardsAndRecognitionRepository, RewardsAndRecognitionRepository>();
+            services.AddTransient<IDisciplinaryIncidentRepository, DisciplinaryIncidentRepository>();
+            services.AddTransient<ITrainingRepository, TrainingRepository>();
+            services.AddTransient<IAppraisalRepository, AppraisalRepository>();
+            services.AddTransient<IIndustryBenchmarkSalaryRepository, IndustryBenchmarkSalaryRepository>();
+            services.AddTransient<IHRPlanningRepository, HRPlanningRepository>();
+            services.AddTransient<IRequestVsAuthorityRepository, RequestVsAuthorityRepository>();
+            services.AddTransient<IDocumentUploadRepository, DocumentUploadRepository>();
+            services.AddTransient<IJobTransitionRepository, JobTransitionRepository>();
+            services.AddTransient<IEditEmployeeInfoRepository, EditEmployeeInfoRepository>();
+            services.AddTransient<IResignationRepository, ResignationRepository>();
+            services.AddTransient<IEmployeeProfileRepository, EmployeeProfileRepository>();
+            services.AddTransient<ICompanyProfileRepository, CompanyProfileRepository>();
+            services.AddTransient<ITalentPoolRepository, TalentPoolRepository>();
+            services.AddTransient<IResumeDataBankRepository, ResumeDataBankRepository>();
+            services.AddTransient<IApplicantTrackingRepository, ApplicantTrackingRepository>();
+            services.AddTransient<ISuccessionPlanningRepository, SuccessionPlanningRepository>();
+            services.AddTransient<ILifeEventsRepository, LifeEventsRepository>();
+<<<<<<< HEAD
+            services.AddTransient<IGrievanceAuthorityRepository, GrievanceAuthorityRepository>();
+=======
+            services.AddTransient<IMedicalCheckupRepository, MedicalCheckupRepository>();
+>>>>>>> cc58d8b487dd04b355245bb1a87a4fc28988edbd
+            #region Reports
+            services.AddTransient<IJoiningAndSeperationReportRepository, JoiningAndSeperationReportRepository>();
+            services.AddTransient<IRenewalInformationReportRepository, RenewalInformationReportRepository>();
+            services.AddTransient<ISalaryStructureReportRepository, SalaryStructureReportRepository>();
+            services.AddTransient<IEmployeeTransferReportRepository>, EmployeeTransferReportRepository();
+            services.AddTransient<IBloodBankReportRepository, BloodBankReportRepository>();
+            services.AddTransient<IEmployeeGroupSummaryReportRepository, EmployeeGroupSummaryReportRepository>();
+            services.AddTransient<ICompensationStructureRepository, CompensationStructureRepository>();
+            services.AddTransient<IJobTransitionReportRepository, JobTransitionReportRepository>();
+            services.AddTransient<ICelebrityListRepository, CelebrityListRepository>();
+            services.AddTransient<IAttritionReportRepository, AttritionReportRepository>();
+            services.AddTransient<IEmployeeInformationReportRepository, EmployeeInformationReportRepository>();
+            services.AddTransient<IGrowthHistoryRepository, GrowthHistoryRepository>();
+            services.AddTransient<IReportBuilderRepository, ReportBuilderRepository>();
+            #endregion
+            #endregion
+            #region TimeOffice
+            services.AddTransient<IDailyAttendanceEntryRepository, DailyAttendanceEntryRepository>();
+            services.AddTransient<ILeaveOpeningRepository, LeaveOpeningRepository>();
+            services.AddTransient<ILeaveCreditDebitRepository, LeaveCreditDebitRepository>();
+            services.AddTransient<ILeaveCarryForwardRepository, LeaveCarryForwardRepository>();
+            services.AddTransient<ILeaveEncashmentRepository, LeaveEncashmentRepository>();
+            services.AddTransient<IDutyRosterRepository, DutyRosterRepository>();
+            services.AddTransient<IHRAttendanceApprovalRepository, HRAttendanceApprovalRepository>();
+            services.AddTransient<IMonthlyAttendanceProcessingRepository, MonthlyAttendanceProcessingRepository>();
+            services.AddTransient<ICoffCreditRepository, CoffCreditRepository>();
+            services.AddTransient<IAttendanceWagesConfirmationRepository, AttendanceWagesConfirmationRepository>();
+            services.AddTransient<IAttendanceSettingRepository, AttendanceSettingRepository>();
+          
+            #region Report
+            services.AddTransient<IMusterRollReportRepository, MusterRollReportRepository>();
+            services.AddTransient<IDailyAttendanceStatusReportRepository, DailyAttendanceStatusReportRepository>();
+            services.AddTransient<ILeaveRegisterRepository, LeaveRegisterRepository>();
+            services.AddTransient<ILeaveApplicationReportRepository, LeaveApplicationReportRepository>();
+            services.AddTransient<IReaderLogReportRepository, ReaderLogReportRepository>();
+            services.AddTransient<IAbsenteeismReportRepository, AbsenteeismReportRepository>();
+            
+            #endregion
+            #endregion
+
+            #region Payroll
+            services.AddTransient<IVariableAllowanceRepository, VariableAllowanceRepository>();
+            services.AddTransient<IVariableDeductionRepository, VariableDeductionRepository>();
+            services.AddTransient<ITDSConfirmationRepository, TDSConfirmationRepository>();
+            services.AddTransient<ILoanIssueRepository, LoanIssueRepository>();
+            services.AddTransient<IHolidayWageSettingsRepository, HolidayWageSettingsRepository>();
+            services.AddTransient<IOffdayWageSettingsRepository, OffdayWageSettingsRepository>();
+            services.AddTransient<IOvertimeSettingsRepository, OvertimeSettingsRepository>();
+            services.AddTransient<ILoanTopUpRepository, LoanTopUpRepository>();
+            services.AddTransient<ILoanClosureRepository, LoanClosureRepository>();
+            services.AddTransient<IPFSettingsRepository, PFSettingsRepository>();
+            services.AddTransient<IESISettingsRepository, ESISettingsRepository>();
+            services.AddTransient<ILOPSettingsRepository, LOPSettingsRepository>();
+            services.AddTransient<IPTConfirmationRepository, PTConfirmationRepository>();
+            services.AddTransient<ILoanConfirmationRepository, LoanConfirmationRepository>();
+            services.AddTransient<IEmployeeWiseOffdaySettingsRepository, EmployeeWiseOffdaySettingsRepository>();
+            services.AddTransient<IPTSettingsRepository, PTSettingsRepository>();
+            services.AddTransient<IPTProcessingRepository, PTProcessingRepository>();
+            services.AddTransient<ISalaryProcessingRepository, SalaryProcessingRepository>();
+            services.AddTransient<IYearlySalaryRepository, YearlySalaryRepository>();
+            services.AddTransient<ISalaryReportsRepository, SalaryReportsRepository>();
+            services.AddTransient<IPaySheetRepository, PaySheetRepository>();
+            services.AddTransient<IBankStatementRepository, BankStatementRepository>();
+            #region Reports
+            services.AddTransient<IESISummaryReportRepository, ESISummaryReportRepository>();
+            services.AddTransient<IPFSummaryReportRepository, PFSummaryReportRepository>();
+            services.AddTransient<IPfEcrReportRepository, PfEcrReportRepository>();
+            services.AddTransient<IEsiEcrReportRepository, EsiEcrReportRepository>();
+            #endregion
+            #endregion
+
+            #region ESSP
+            services.AddTransient<ILeaveApplicationRepository, LeaveApplicationRepository>();
+            services.AddTransient<IOnDutyApplicationRepository, OnDutyApplicationRepository>();
+            services.AddTransient<IWFHApplicationRepository, WFHApplicationRepository>();
+            services.AddTransient<IOnDutyApplicationRepository, OnDutyApplicationRepository>();
+            services.AddTransient<ICoffApplicationRepository, CoffApplicationRepository>();
+            services.AddTransient<IAttendanceRegularizationRepository, AttendanceRegularizationRepository>();
+            services.AddTransient<IAbsenteeismRegularizationRepository, AbsenteeismRegularizationRepository>();
+            services.AddTransient<IMyProfileRepository, MyProfileRepository>();
+            services.AddTransient<ILessHourRegularizationRepository, LessHourRegularizationRepository>();
+            services.AddTransient<IRequestCancellationRepository, RequestCancellationRepository>();
+            services.AddTransient<IEmployeeResignationRepository, EmployeeResignationRepository>();
+            services.AddTransient<IExitInterviewRepository, ExitInterviewRepository>();
+            #endregion
+
+            #region DASHBOARD
+            services.AddTransient<IDataBankDashBoardRepository, DataBankDashBoardRepository>();  
+            #endregion
+        }
+    }
+}

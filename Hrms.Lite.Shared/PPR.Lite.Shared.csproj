@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.19" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.20.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.19" />
+		<PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="7.0.7" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0" />
+		<PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+		<PackageReference Include="Telerik.Reporting.Trial" Version="17.0.23.315" />
+		<PackageReference Include="Telerik.Reporting.WebServiceDataSource.Trial" Version="17.0.23.315" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.9" />
+	</ItemGroup>
+
+
+	
+	<ItemGroup>
+	<Folder Include="Controllers\TDS\" />
+	<Folder Include="Mobile\" />
+	<Folder Include="NewFolder\" />
+
+	
+	<Folder Include="PDF\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="FCMFireBase\fcm-firebase.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	
+</Project>
